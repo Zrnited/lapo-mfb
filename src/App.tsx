@@ -5,6 +5,8 @@ import Layout from "./components/dashboard/layout";
 import Home from "./pages/Home";
 // import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
+import CardProfile from "./pages/CardProfile";
+import CardRequest from "./pages/CardRequest";
 
 const queryclient = new QueryClient();
 
@@ -17,7 +19,8 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Layout />}>
-            {/* <Route path="about" element={<About />} /> */}
+            <Route path="/dashboard/card-profile" element={<CardProfile />} />
+            <Route path="/dashboard/card-request" element={<CardRequest />} />
             <Route index element={<Dashboard />} />
           </Route>
         </Routes>
