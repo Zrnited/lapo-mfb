@@ -10,8 +10,8 @@ export interface HeaderProps {
 
 export default function Header({setNav}: HeaderProps) {
   return (
-    <header className="p-3 border border-[#DEDEDF] fixed top-0 right-0 left-0 flex justify-center sm:pl-60 md:pl-64">
-      <nav className="flex flex-row justify-between items-center gap-x-4 container max-w-[1440px] w-full">
+    <header className="border border-[#DEDEDF] fixed top-0 right-0 left-0 flex justify-center sm:pl-60 md:pl-64">
+      <nav className="flex p-3 flex-row justify-between items-center gap-x-4 container max-w-[1440px] w-full bg-white">
         <div className="flex flex-row gap-x-3 items-center">
           <span onClick={()=>setNav(true)} className="cursor-pointer sm:hidden">
             <GiHamburgerMenu color="#001735" />

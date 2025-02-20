@@ -17,7 +17,7 @@ export default function Sidebar({setNav, nav}: AsideProps) {
     // console.log(location.pathname);
 
   return (
-    <aside className={`border-r-2 border-[#DEDEDF] w-1/2 bg-white fixed top-0 h-screen transition-all ease-in-out delay-100 overflow-scroll activity sm:min-w-[230px] sm:max-w-[230px] sm:static z-10 ${nav ? "left-0" : "-left-100"}`}>
+    <aside className={`border-r-2 border-[#DEDEDF] w-1/2 bg-white fixed top-0 h-screen transition-all ease-in-out delay-100 overflow-scroll activity sm:min-w-[230px] sm:max-w-[230px] sm:left-0 ${nav ? "left-0" : "-left-100"}`}>
       <div className="w-full py-5 px-2 flex flex-col gap-y-8">
         <div className="flex flex-row justify-between sm:justify-start">
             <img src={lapologo} alt="logo" className="w-[138px] h-auto" />

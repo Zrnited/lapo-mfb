@@ -14,6 +14,10 @@ import authList from "../assets/icons/auth-list.png";
 import authQueue from "../assets/icons/auth-queue.png";
 import trail from "../assets/icons/trail.png";
 import account from "../assets/icons/account.png";
+import manageCard from "../assets/icons/manage-card.png";
+import instantCard from "../assets/icons/instant-card.png";
+import personalizedCard from "../assets/icons/personalized-card.png";
+import reviewCard from "../assets/icons/review-card.png";
 
 const navigationLinks: NavLinks[] = [
   {
@@ -80,4 +84,23 @@ const navigationLinks: NavLinks[] = [
   },
 ];
 
-export {navigationLinks}
+const quickAccess = [
+  {
+    title: "manage a card",
+    icon: manageCard
+  },
+  {
+    title: "issue instant card",
+    icon: instantCard
+  },
+  {
+    title: "issue personalized card",
+    icon: personalizedCard
+  },
+  {
+    title: "review card requests",
+    icon: reviewCard
+  },
+]
+
+export {navigationLinks, quickAccess}

@@ -13,7 +13,7 @@ export default function Layout() {
         <section className="flex flex-row gap-x-2">
           {/* aside */}
           <Sidebar nav={nav} setNav={setNav} />
-          <div className="p-16 bg-[#F8FBFF] w-full mt-16 sm:h-[90vh] sm:overflow-scroll activity">
+          <div className="bg-[#F8FBFF] w-full pt-16 flex-grow flex pr-5 pb-5 pl-5 sm:pl-60">
             <Outlet /> {/* Renders the current page */}
           </div>
         </section>
