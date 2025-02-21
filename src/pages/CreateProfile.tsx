@@ -1,7 +1,7 @@
 import { GoChevronDown } from "react-icons/go";
 import add from "../assets/icons/add-icon.png";
 import FeesTable from "../components/card-profile/table/FeesTable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Fee } from "../entities";
 
 export default function CreateProfile() {
@@ -35,7 +35,7 @@ export default function CreateProfile() {
       classname: "hidden md:table-cell",
     }
   ];
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [fees, setFees] = useState<Fee[]>([
     {
         name: "",
@@ -47,6 +47,11 @@ export default function CreateProfile() {
         account: ""
     }
   ]); 
+
+  //comment out later
+  useEffect(()=>{
+    setFees(fees);
+  }, [fees])
 
   return (
     <div className="w-full">

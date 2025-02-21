@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import search from "../assets/icons/search-icon.png";
 import { CardProfileType } from "../entities";
 import add from "../assets/icons/add-icon.png";
@@ -33,7 +33,6 @@ export default function CardProfile() {
     },
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [exisCardProfile, setExisCardProfile] = useState<CardProfileType[]>([
     {
         cardName: "Verve-1",
@@ -57,6 +56,11 @@ export default function CardProfile() {
         dateCreated: "11/10/2024 23:21:03"
     }
   ]);
+
+  //comment out later
+  useEffect(()=>{
+    setExisCardProfile(exisCardProfile);
+  }, [exisCardProfile])
 
   return (
     <div className="w-full">
