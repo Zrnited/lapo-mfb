@@ -25,5 +25,5 @@ export default function RequestDetails() {
 
   if (!displayPage) return <h1>Card details not found.</h1>;
 
-  return <main>Here, welcome</main>;
+  return <main>Here, welcome to request details.</main>;
 }
