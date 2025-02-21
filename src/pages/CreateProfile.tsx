@@ -3,6 +3,7 @@ import add from "../assets/icons/add-icon.png";
 import FeesTable from "../components/card-profile/table/FeesTable";
 import { useEffect, useState } from "react";
 import { Fee } from "../entities";
+import AddFees from "../components/card-profile/modal/AddFees";
 
 export default function CreateProfile() {
   const tableHeadings = [
@@ -33,25 +34,34 @@ export default function CreateProfile() {
     {
       name: "account",
       classname: "hidden md:table-cell",
-    }
+    },
   ];
 
   const [fees, setFees] = useState<Fee[]>([
     {
-        name: "",
-        value: 0,
-        frequency: "",
-        currency: "",
-        time: "",
-        accountPad: "",
-        account: ""
-    }
-  ]); 
+      name: "",
+      value: 0,
+      frequency: "",
+      currency: "",
+      time: "",
+      accountPad: "",
+      account: "",
+    },
+  ]);
+  const [showFeesModal, setShowFeesModal] = useState<boolean>(false);
 
   //comment out later
-  useEffect(()=>{
+  useEffect(() => {
     setFees(fees);
-  }, [fees])
+  }, [fees]);
+
+  useEffect(() => {
+    if (showFeesModal) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [showFeesModal]);
 
   return (
     <div className="w-full">
@@ -185,7 +195,7 @@ export default function CreateProfile() {
           {/* fees */}
           <div className="g-white rounded-[10px] border border-[#E2E2E2] p-3 bg-white">
             <h2 className="font-semibold text-[#121212] mb-4">Fees</h2>
-            <div className="capitalize bg-[#014DAF] text-white h-[36px] w-[101px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer">
+            <div onClick={()=>setShowFeesModal(true)} className="capitalize bg-[#014DAF] text-white h-[36px] w-[101px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer">
               <img src={add} alt="icon" className="h-[11.67px] w-[11.67px]" />
               <p>add fee</p>
             </div>
@@ -199,6 +209,9 @@ export default function CreateProfile() {
           </button>
         </form>
       </section>
+
+      {/* add fees modal */}
+      {showFeesModal && (<AddFees setShowFeesModal={setShowFeesModal} />)}
     </div>
   );
 }

@@ -67,13 +67,13 @@ export default function FeesTable({
                 {fee.time}
               </td>
               <td
-                className="table-cell font-semibold border border-[#EAECF0]"
+                className="hidden md:table-cell font-semibold border border-[#EAECF0]"
                 style={{}}
               >
                 {fee.accountPad}
               </td>
               <td
-                className="table-cell font-semibold border border-[#EAECF0]"
+                className="hidden md:table-cell font-semibold border border-[#EAECF0]"
                 style={{}}
               >
                 {fee.account}
