@@ -36,7 +36,6 @@ export default function CreateProfile() {
       classname: "hidden md:table-cell",
     },
   ];
-
   const [fees, setFees] = useState<Fee[]>([
     {
       name: "",
