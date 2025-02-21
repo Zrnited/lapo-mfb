@@ -2,7 +2,7 @@ import lapologo from "../../assets/images/logo.png";
 import dashInactive from "../../assets/icons/dash-inactive.png";
 import dashActive from "../../assets/icons/active-dashboard.png";
 import { Link } from "react-router-dom";
-import { navigationLinks } from "../../utils/navlinks";
+import { navigationLinks } from "../../utils/dashboardDatas";
 import { useLocation } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -14,10 +14,9 @@ export interface AsideProps {
 export default function Sidebar({setNav, nav}: AsideProps) {
 
     const { pathname } = useLocation();
-    // console.log(location.pathname);
 
   return (
-    <aside className={`border-r-2 border-[#DEDEDF] w-1/2 bg-white fixed top-0 h-screen transition-all ease-in-out delay-100 overflow-scroll activity sm:min-w-[230px] sm:max-w-[230px] sm:left-0 ${nav ? "left-0" : "-left-100"}`}>
+    <aside className={`border-r-2 border-[#DEDEDF] w-1/2 bg-white fixed top-0 h-screen z-20 container transition-all ease-in-out delay-100 overflow-scroll activity sm:hidden ${nav ? "left-0" : "-left-100"}`}>
       <div className="w-full py-5 px-2 flex flex-col gap-y-8">
         <div className="flex flex-row justify-between sm:justify-start">
             <img src={lapologo} alt="logo" className="w-[138px] h-auto" />

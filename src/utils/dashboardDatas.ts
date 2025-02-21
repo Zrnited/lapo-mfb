@@ -1,5 +1,5 @@
 // import { NavLink } from "react-router-dom"
-import { NavLinks } from "../entities";
+import { NavLinks, RequestCardRequests } from "../entities";
 import branches from "../assets/icons/branches.png";
 import roles from "../assets/icons/roles.png";
 import users from "../assets/icons/users.png";
@@ -18,6 +18,10 @@ import manageCard from "../assets/icons/manage-card.png";
 import instantCard from "../assets/icons/instant-card.png";
 import personalizedCard from "../assets/icons/personalized-card.png";
 import reviewCard from "../assets/icons/review-card.png";
+import analytics1 from "../assets/icons/analytics-1.png";
+import analytics2 from "../assets/icons/analytics-2.png";
+import analytics3 from "../assets/icons/analytics-3.png";
+import analytics4 from "../assets/icons/analytics-4.png";
 
 const navigationLinks: NavLinks[] = [
   {
@@ -103,4 +107,66 @@ const quickAccess = [
   },
 ]
 
-export {navigationLinks, quickAccess}
+const analyticalDatas = [
+  {
+    title:"total active cards",
+    percentage:"+9%",
+    value:"26,478",
+    icon: analytics1,
+    isStats: true,
+    period:"this month"
+  },
+  {
+    title:"total personalized cards",
+    percentage:"+8.5%",
+    value:"15,703",
+    icon: analytics2,
+    isStats: true,
+    period:"this month"
+  },
+  {
+    title:"today's revenue",
+    percentage:"+6%",
+    value:"₦9.3",
+    icon: analytics3,
+    isStats: true,
+    period:"vs yesterday"
+  },
+  {
+    title:"pending requests",
+    percentage:"",
+    value:"38",
+    icon: analytics4,
+    isStats: false,
+    period:""
+  },
+]
+
+const recentCardRequests: RequestCardRequests[] = [
+  {
+    branch: "corporate",
+    cardType: "instant",
+    quantity: 10,
+    status: "ready"
+  },
+  {
+    branch: "corporate",
+    cardType: "personalized",
+    quantity: 10,
+    status: "in progress"
+  },
+  {
+    branch: "corporate",
+    cardType: "personalized",
+    quantity: 10,
+    status: "acknowledged"
+  },
+  {
+    branch: "corporate",
+    cardType: "instant",
+    quantity: 10,
+    status: "pending"
+  }
+]
+
+export {navigationLinks, quickAccess, analyticalDatas, recentCardRequests}
