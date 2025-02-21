@@ -29,3 +29,13 @@ export type Fee = {
     accountPad: string;
     account: string;
 }
+
+export type CardRequest = {
+  id: number,
+  branch: string;
+  initiatotr: string;
+  quantity: number;
+  batch: string;
+  dateRequested: string;
+  status: string;
+}

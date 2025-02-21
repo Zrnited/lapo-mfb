@@ -2,7 +2,7 @@ import lapologo from "../../assets/images/logo.png";
 import dashInactive from "../../assets/icons/dash-inactive.png";
 import dashActive from "../../assets/icons/active-dashboard.png";
 import { Link } from "react-router-dom";
-import { navigationLinks } from "../../utils/dashboardDatas";
+import { navigationLinks } from "../../utils";
 import { useLocation } from "react-router-dom";
 
 export default function SideNavigation() {

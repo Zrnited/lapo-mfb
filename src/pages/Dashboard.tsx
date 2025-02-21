@@ -5,7 +5,7 @@ import {
   analyticalDatas,
   quickAccess,
   recentCardRequests,
-} from "../utils/dashboardDatas";
+} from "../utils";
 import { Analytics } from "../components/dashboard/analytics";
 import MonthlyIssuance from "../components/dashboard/graphs/monthlyIssuance";
 import RecentCardRequests from "../components/dashboard/tables/recentCardRequests";
