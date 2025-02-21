@@ -9,8 +9,8 @@ import {
 import { Analytics } from "../components/dashboard/analytics";
 import MonthlyIssuance from "../components/dashboard/graphs/monthlyIssuance";
 import RecentCardRequests from "../components/dashboard/tables/recentCardRequests";
-import WeekIncome from "../components/dashboard/tables/weekIncome";
-import StatusDistribution from "../components/dashboard/tables/statusDistribution";
+import WeekIncome from "../components/dashboard/graphs/weekIncome";
+import StatusDistribution from "../components/dashboard/graphs/statusDistribution";
 
 export default function Dashboard() {
   const tableHead = [

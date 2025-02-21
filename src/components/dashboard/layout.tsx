@@ -15,7 +15,7 @@ export default function Layout() {
           {/* aside */}
           <Sidebar nav={nav} setNav={setNav} />
           <SideNavigation />
-          <div className="bg-[#F8FBFF] w-full pt-16 flex-grow flex pr-5 pb-5 pl-5 sm:pl-60">
+          <div className="w-full pt-16 flex-grow flex pr-5 pb-5 pl-5 sm:pl-60">
             <Outlet /> {/* Renders the current page */}
           </div>
         </section>
