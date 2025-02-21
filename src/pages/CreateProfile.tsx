@@ -4,6 +4,7 @@ import FeesTable from "../components/card-profile/table/FeesTable";
 import { useEffect, useState } from "react";
 import { Fee } from "../entities";
 import AddFees from "../components/card-profile/modal/AddFees";
+import { hideScrollBar } from "../utils";
 
 export default function CreateProfile() {
   const tableHeadings = [
@@ -49,16 +50,13 @@ export default function CreateProfile() {
   ]);
   const [showFeesModal, setShowFeesModal] = useState<boolean>(false);
 
+  
   useEffect(() => {
     setFees(fees);
   }, [fees]);
 
   useEffect(() => {
-    if (showFeesModal) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
+    hideScrollBar(showFeesModal);
   }, [showFeesModal]);
 
   return (

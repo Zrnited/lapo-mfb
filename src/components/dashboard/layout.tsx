@@ -1,11 +1,16 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./header";
 import Sidebar from "./sidebar";
 import SideNavigation from "./sidenavigation";
+import { hideScrollBar } from "../../utils";
 
 export default function Layout() {
   const [nav, setNav] = useState<boolean>(false);
+
+  useEffect(()=>{
+    hideScrollBar(nav);
+  }, [nav])
 
   return (
     <main className="w-full flex justify-center">

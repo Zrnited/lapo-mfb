@@ -1,6 +1,8 @@
 import lapologo from "../../assets/images/logo.png";
 import dashInactive from "../../assets/icons/dash-inactive.png";
 import dashActive from "../../assets/icons/active-dashboard.png";
+import logoutIcon from "../../assets/icons/logout-icon.png";
+import cardInfraLogo from "../../assets/icons/card-infra-logo.png";
 import { Link } from "react-router-dom";
 import { navigationLinks } from "../../utils";
 import { useLocation } from "react-router-dom";
@@ -21,11 +23,11 @@ export default function Sidebar({ setNav, nav }: AsideProps) {
       }`}
     >
       <div className="w-full py-5 px-2 flex flex-col gap-y-8">
-        <div className="flex flex-row justify-between sm:justify-start">
-          <img src={lapologo} alt="logo" className="w-[138px] h-auto" />
+        <div className="flex flex-row justify-between w-full">
+          <img src={lapologo} alt="logo" className="w-[135px] h-auto" />
           <button
             onClick={() => setNav(false)}
-            className="h-[23px] w-[23px] bg-red-500 text-white flex justify-center items-center rounded-full text-xs cursor-pointer sm:hidden"
+            className="h-[23px] text-[#667085] text-xl flex justify-center items-center rounded-full cursor-pointer"
           >
             <AiOutlineClose />
           </button>
@@ -87,6 +89,14 @@ export default function Sidebar({ setNav, nav }: AsideProps) {
               );
             })}
           </ul>
+        </div>
+        <div className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-16">
+          <img src={logoutIcon} alt="icon" className="w-[10.67px] h-[12px]" />
+          <p className="text-[#121212] text-xs capitalize">logout</p>
+        </div>
+        <div className="p-3 flex flex-col gap-y-2">
+          <p className="uppercase text-[8.5px] text-[#808080]">powered by</p>
+            <img src={cardInfraLogo} alt="icon" className="w-[93.33px] h-[41.42px]" />
         </div>
       </div>
     </aside>

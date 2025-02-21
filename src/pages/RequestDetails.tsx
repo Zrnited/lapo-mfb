@@ -23,7 +23,7 @@ export default function RequestDetails() {
     console.log(cardObject);
   }, []);
 
-  if (!displayPage) return <h1>Card details not found</h1>;
+  if (!displayPage) return <h1>Card details not found.</h1>;
 
   return <main>Here, welcome</main>;
 }

@@ -1,6 +1,8 @@
 import lapologo from "../../assets/images/logo.png";
 import dashInactive from "../../assets/icons/dash-inactive.png";
 import dashActive from "../../assets/icons/active-dashboard.png";
+import logoutIcon from "../../assets/icons/logout-icon.png";
+import cardInfraLogo from "../../assets/icons/card-infra-logo.png";
 import { Link } from "react-router-dom";
 import { navigationLinks } from "../../utils";
 import { useLocation } from "react-router-dom";
@@ -69,6 +71,18 @@ export default function SideNavigation() {
               );
             })}
           </ul>
+        </div>
+        <div className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-16">
+          <img src={logoutIcon} alt="icon" className="w-[10.67px] h-[12px]" />
+          <p className="text-[#121212] text-xs capitalize">logout</p>
+        </div>
+        <div className="p-3 flex flex-col gap-y-2">
+          <p className="uppercase text-[8.5px] text-[#808080]">powered by</p>
+          <img
+            src={cardInfraLogo}
+            alt="icon"
+            className="w-[93.33px] h-[41.42px]"
+          />
         </div>
       </div>
     </aside>

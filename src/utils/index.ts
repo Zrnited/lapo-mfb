@@ -217,10 +217,19 @@ const cardRequests: CardRequest[] = [
   },
 ];
 
+function hideScrollBar(activity: boolean) {
+  if (activity) {
+    document.body.classList.add("overflow-hidden");
+  } else {
+    document.body.classList.remove("overflow-hidden");
+  }
+}
+
 export {
   navigationLinks,
   quickAccess,
   analyticalDatas,
   recentCardRequests,
   cardRequests,
+  hideScrollBar,
 };
