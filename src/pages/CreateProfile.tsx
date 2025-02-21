@@ -49,7 +49,6 @@ export default function CreateProfile() {
   ]);
   const [showFeesModal, setShowFeesModal] = useState<boolean>(false);
 
-  //comment out later
   useEffect(() => {
     setFees(fees);
   }, [fees]);
