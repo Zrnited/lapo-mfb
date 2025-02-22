@@ -48,13 +48,16 @@ export default function MonthlyIssuance() {
     },
   ];
   const [barSize, setBarSize] = useState(40); // Default size
+  const [barGap, setBarGap] = useState(15); // Default size
 
   useEffect(() => {
     const updateBarSize = () => {
       if (window.innerWidth < 640) {
-        setBarSize(20); // Smaller bars on mobile
+        setBarSize(20);
+        setBarGap(10);
       } else {
-        setBarSize(40); // Larger bars on desktop
+        setBarSize(40);
+        setBarGap(15);
       }
     };
 
@@ -66,12 +69,11 @@ export default function MonthlyIssuance() {
 
   return (
     <ResponsiveContainer width="100%" height={250}>
-      <BarChart className="w-full h-auto" data={data} barGap={10} barSize={barSize} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+      <BarChart className="w-full h-auto" data={data} barGap={barGap} barSize={barSize} margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
         <CartesianGrid stroke="#F2F4F7" vertical={false} strokeDasharray="0" />
         <XAxis dataKey="name" tick={{ fontSize: 12 }} />
         <YAxis tick={{ fontSize: 12 }} />
         <Tooltip cursor={{ fill: "transparent" }} />
-        {/* <Legend /> */}
         <Bar
           dataKey="personalized"
           fill="#014DAF"

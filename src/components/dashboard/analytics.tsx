@@ -3,7 +3,7 @@ import arrow from "../../assets/icons/arrow.png";
 import attention from "../../assets/icons/attention.png";
 
 interface AnalyticsProps {
-  key?: number;
+  id?: number;
   title: string;
   value: string;
   percentage: string;
@@ -19,7 +19,7 @@ export function Analytics({
   icon,
   isStats,
   period,
-  key,
+  id,
 }: AnalyticsProps) {
   return (
     <motion.div
@@ -28,7 +28,7 @@ export function Analytics({
         visible: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.5 }}
-      key={key}
+      key={id}
       className="border border-[#E2E2E2] p-3 flex flex-col gap-y-2 rounded-[10px] bg-white w-full transition ease-in-out delay-100 md:w-full xl:w-[286px]"
     >
       <img src={icon} alt="icon" className="w-[13.33px] h-[10px]" />

@@ -38,7 +38,7 @@ export default function CreateProfile() {
       classname: "hidden md:table-cell",
     },
   ];
-  const [fees, setFees] = useState<Fee[]>([
+  const fees: Fee[] = [
     {
       name: "",
       value: "",
@@ -48,12 +48,8 @@ export default function CreateProfile() {
       accountPad: "",
       account: "",
     },
-  ]);
+  ];
   const [showFeesModal, setShowFeesModal] = useState<boolean>(false);
-
-  useEffect(() => {
-    setFees(fees);
-  }, [fees]);
 
   useEffect(() => {
     hideScrollBar(showFeesModal);

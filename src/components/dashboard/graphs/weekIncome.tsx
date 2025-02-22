@@ -4,7 +4,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-//   Legend,
   Line,
   ResponsiveContainer,
 } from "recharts";
@@ -44,8 +43,6 @@ export default function WeekIncome() {
   return (
     <ResponsiveContainer  width="100%" height={300}>
       <LineChart
-        // width={730}
-        // height={250}
         data={data}
         margin={{ top: 5, right: 30, left: 0, bottom: 0 }}
       >
@@ -53,8 +50,6 @@ export default function WeekIncome() {
         <XAxis dataKey="name" tick={{ fontSize: 12 }} padding={{ left: 0, right: 0 }} />
         <YAxis tick={{ fontSize: 12 }} />
         <Tooltip />
-        {/* <Legend /> */}
-        {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" /> */}
         <Line type="monotone" dataKey="income" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>

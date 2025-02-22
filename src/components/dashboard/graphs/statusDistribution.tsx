@@ -1,7 +1,3 @@
-// export default function StatusDistribution() {
-//   return ();
-// }
-
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 
@@ -33,13 +29,13 @@ const options = {
   responsive: true,
   maintainAspectRatio: false,
   rotation: 90,
-  cutout: "87%", // Creates the donut hole effect
+  cutout: "87%", 
   plugins: {
     legend: {
-      display: false, // Hide legend
+      display: false, 
     },
     tooltip: {
-      enabled: true, // Enable tooltips
+      enabled: true, 
     },
   },
 };

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import search from "../assets/icons/search-icon.png";
 import { CardProfileType } from "../entities";
@@ -34,7 +33,7 @@ export default function CardProfile() {
     },
   ];
 
-  const [exisCardProfile, setExisCardProfile] = useState<CardProfileType[]>([
+  const exisCardProfile: CardProfileType[] = [
     {
       cardName: "Verve-1",
       currency: "NGN",
@@ -56,12 +55,7 @@ export default function CardProfile() {
       binPrefix: "50611234",
       dateCreated: "11/10/2024 23:21:03",
     },
-  ]);
-
-  //comment out later
-  useEffect(() => {
-    setExisCardProfile(exisCardProfile);
-  }, [exisCardProfile]);
+  ];
 
   return (
     <motion.div
