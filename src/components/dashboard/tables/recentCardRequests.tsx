@@ -49,13 +49,38 @@ export default function RecentCardRequests({
               >
                 {req.quantity}
               </td>
+              {req.status === "ready" && (
+                <td className="hidden md:table-cell text-[#067647]">
+                  <div className="bg-[#ECFDF3] border border-[#ABEFC6] rounded-full w-[44px] h-[22px] place-self-center flex justify-center items-center">
+                    {req.status}
+                  </div>
+                </td>
+              )}
+              {req.status === "in progress" && (
+                <td className="hidden md:table-cell text-[#B54708]">
+                  <div className="bg-[#FFFAEB] border border-[#FEDF89] rounded-full w-[67px] h-[22px] place-self-center flex justify-center items-center">
+                    {req.status}
+                  </div>
+                </td>
+              )}
+              {req.status === "pending" && (
+                <td className="hidden md:table-cell text-[#344054]">
+                  <div className="bg-[#F9FAFB] border border-[#EAECF0] rounded-full w-[54px] h-[22px] place-self-center flex justify-center items-center">
+                    {req.status}
+                  </div>
+                </td>
+              )}
+              {req.status === "acknowledged" && (
+                <td className="hidden md:table-cell text-[#175CD3]">
+                  <div className="bg-[#EFF8FF] border border-[#B2DDFF] rounded-full w-[84px] h-[22px] place-self-center flex justify-center items-center">
+                    {req.status}
+                  </div>
+                </td>
+              )}
               <td
-                className="hidden md:table-cell"
-                style={{ fontWeight: "normal" }}
+                className="table-cell text-[#014DAF] font-semibold"
+                style={{}}
               >
-                {req.status}
-              </td>
-              <td className="table-cell text-[#014DAF] font-semibold" style={{ }}>
                 View
               </td>
             </tr>

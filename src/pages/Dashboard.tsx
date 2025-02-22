@@ -11,8 +11,25 @@ import MonthlyIssuance from "../components/dashboard/graphs/monthlyIssuance";
 import RecentCardRequests from "../components/dashboard/tables/recentCardRequests";
 import WeekIncome from "../components/dashboard/graphs/weekIncome";
 import StatusDistribution from "../components/dashboard/graphs/statusDistribution";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
+  const [user, setUser] = useState<string>();
+
+  function getUser (){
+    const userName = sessionStorage.getItem("user")
+    if(userName) setUser(userName);
+  }
+
+  function getCurrentDate(): string {
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = { day: "2-digit", month: "short", year: "numeric" };
+    return date.toLocaleDateString("en-GB", options).replace(",", "");
+  }
+  
+  console.log(getCurrentDate()); // Example output: "21 Feb 2025"
+  
+
   const tableHead = [
     {
       name: "branch",
@@ -36,6 +53,10 @@ export default function Dashboard() {
     },
   ];
 
+  useEffect(()=>{
+    getUser();
+  }, [user])
+
   return (
     <div className="w-full">
       {/* dashboard overview section */}
@@ -44,7 +65,7 @@ export default function Dashboard() {
         <div className="flex flex-col gap-y-3 lg:flex-row lg:justify-between">
           <div>
             <h1 className="font-bold text-lg">
-              Hi Nazeer, what would you like to do today?
+              {`Hi ${user ? user : "User"}, what would you like to do today?`}
             </h1>
             <p className="text-xs">
               Last login: 26/11/2024 <span>14:39:58</span>
@@ -60,7 +81,7 @@ export default function Dashboard() {
               <p className="font-semibold">Today</p>
             </div>
             <hr className="h-[15px] border-none w-[0.5px] bg-[#D0D5DD]" />
-            <p>11 Nov 2024</p>
+            <p>{getCurrentDate()}</p>
           </div>
         </div>
         {/* quick access */}

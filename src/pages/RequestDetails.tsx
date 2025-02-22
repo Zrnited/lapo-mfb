@@ -1,6 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { CardRequest } from "../entities";
+import Actions from "../components/card-requests/ui/Actions";
+import download from "../assets/icons/download.png";
+import markProgress from "../assets/icons/mark-inprogress.png";
+import markReady from "../assets/icons/mark-ready.png";
+import dispatch from "../assets/icons/dispatch.png";
+import acknowledged from "../assets/icons/acknowledged.png";
+// import Notify from "../components/card-requests/modals/Notify";
 
 export default function RequestDetails() {
   //checks if card exists
@@ -84,14 +91,57 @@ export default function RequestDetails() {
             </div>
             <div className="capitalize flex flex-col gap-y-1">
               <label className="text-[#344054] text-sm">status</label>
-              <p className="text-[#344054] bg-[#EAECF0] px-3 py-1 rounded-full w-fit">pending</p>
+              <p className="text-[#344054] bg-[#EAECF0] px-3 py-0.5 rounded-full w-fit">
+                pending
+              </p>
             </div>
           </div>
         </div>
-        <div className="py-5">
-          <h2 className="capitalize text-[#344054] text-sm font-semibold">actions</h2>
+        <div className="pt-5 pb-3">
+          <h2 className="capitalize text-[#344054] text-sm font-semibold">
+            actions
+          </h2>
+        </div>
+        {/* update progress */}
+        <div className="grid grid-cols-1 gap-3 w-fit sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-row xl:gap-3">
+          <Actions
+            text="Download for Production"
+            icon={download}
+            wrapperClassname="bg-[#344054]"
+            imgClassname="h-[16.67px] w-[14.17px]"
+          />
+
+          <Actions
+            text="Mark as In Progress"
+            icon={markProgress}
+            wrapperClassname="bg-[#B54708]"
+            imgClassname="h-[16.67px] w-[16.67px]"
+          />
+
+          <Actions
+            text="Mark as Ready"
+            icon={markReady}
+            wrapperClassname="bg-[#067647]"
+            imgClassname="h-[16.43px] w-[15.83px]"
+          />
+
+          <Actions
+            text="Send to Dispatch"
+            icon={dispatch}
+            wrapperClassname="bg-[#8020E7]"
+            imgClassname="h-[15.17px] w-[15px]"
+          />
+
+          <Actions
+            text="Mark as Acknowledged"
+            icon={acknowledged}
+            wrapperClassname="bg-[#014DAF]"
+            imgClassname="h-[16.67px] w-[16.67px]"
+          />
         </div>
       </section>
+      {/* notification modal */}
+      {/* <Notify text="Production file has been downloaded." /> */}
     </div>
   );
 }

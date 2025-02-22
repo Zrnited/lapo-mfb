@@ -6,13 +6,13 @@ export interface TableProps {
     classname?: string;
   }[];
   tableBody: CardRequest[];
-  setCardReqItem: React.Dispatch<React.SetStateAction<CardRequest | undefined>>
+  setCardReqItem: React.Dispatch<React.SetStateAction<CardRequest | undefined>>;
 }
 
 export default function CardRequestsTable({
   tableHead,
   tableBody,
-  setCardReqItem
+  setCardReqItem,
 }: TableProps) {
   return (
     <table className="w-full border-collapse border-spacing-x-2 border-spacing-y-2 text-left font-semibold text-sm">
@@ -36,7 +36,7 @@ export default function CardRequestsTable({
           return (
             <tr
               className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467]"
-              onClick={()=>setCardReqItem(card)}
+              onClick={() => setCardReqItem(card)}
               key={idx}
             >
               <td
@@ -69,15 +69,35 @@ export default function CardRequestsTable({
               >
                 {card.dateRequested}
               </td>
-              <td
-                className="hidden md:table-cell border border-[#EAECF0]"
-                style={{ fontWeight: "normal" }}
-              >
-                {card.status}
-              </td>
-              <td
-                className="table-cell font-semibold text-[#014DAF] hover:underline hover:cursor-pointer border border-[#EAECF0]"
-              >
+              {card.status === "ready" && (
+                <td className="hidden md:table-cell border border-[#EAECF0] text-[#067647]">
+                  <div className="bg-[#ECFDF3] border border-[#ABEFC6] rounded-full w-[44px] h-[22px] place-self-center flex justify-center items-center">
+                    {card.status}
+                  </div>
+                </td>
+              )}
+              {card.status === "in progress" && (
+                <td className="hidden md:table-cell border border-[#EAECF0] text-[#B54708]">
+                  <div className="bg-[#FFFAEB] border border-[#FEDF89] rounded-full w-[67px] h-[22px] place-self-center flex justify-center items-center">
+                    {card.status}
+                  </div>
+                </td>
+              )}
+              {card.status === "pending" && (
+                <td className="hidden md:table-cell border border-[#EAECF0] text-[#344054]">
+                  <div className="bg-[#F9FAFB] border border-[#EAECF0] rounded-full w-[54px] h-[22px] place-self-center flex justify-center items-center">
+                    {card.status}
+                  </div>
+                </td>
+              )}
+              {card.status === "acknowledged" && (
+                <td className="hidden md:table-cell border border-[#EAECF0] text-[#175CD3]">
+                  <div className="bg-[#EFF8FF] border border-[#B2DDFF] rounded-full w-[84px] h-[22px] place-self-center flex justify-center items-center">
+                    {card.status}
+                  </div>
+                </td>
+              )}
+              <td className="table-cell font-semibold text-[#014DAF] hover:underline hover:cursor-pointer border border-[#EAECF0]">
                 view
               </td>
             </tr>

@@ -7,7 +7,11 @@ import { Link } from "react-router-dom";
 import { navigationLinks } from "../../utils";
 import { useLocation } from "react-router-dom";
 
-export default function SideNavigation() {
+interface SideNavigationProps {
+  handleLogout(): void
+}
+
+export default function SideNavigation({handleLogout}: SideNavigationProps) {
   const { pathname } = useLocation();
 
   return (
@@ -72,7 +76,7 @@ export default function SideNavigation() {
             })}
           </ul>
         </div>
-        <div className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-16">
+        <div onClick={handleLogout} className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-16">
           <img src={logoutIcon} alt="icon" className="w-[10.67px] h-[12px]" />
           <p className="text-[#121212] text-xs capitalize">logout</p>
         </div>
