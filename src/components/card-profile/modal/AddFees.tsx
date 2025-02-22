@@ -1,13 +1,20 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { CiSquarePlus } from "react-icons/ci";
+import { motion } from "framer-motion";
 
 interface AddFeesProps {
-    setShowFeesModal: React.Dispatch<React.SetStateAction<boolean>>
+  setShowFeesModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function AddFees({setShowFeesModal}: AddFeesProps) {
+export default function AddFees({ setShowFeesModal }: AddFeesProps) {
   return (
-    <div className="w-full h-screen fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center z-40">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="w-full h-screen fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center z-40"
+    >
       <div className="w-full h-full fixed top-0 bottom-0 left-0 right-0 bg-[#101828b7] backdrop-blur-md"></div>
       <div className="container absolute z-30 top-1/2 transform -translate-y-1/2 rounded-[10px] bg-white w-[90%] py-3 max-w-[496px] h-[600px] overflow-scroll activity">
         <div className="p-3 flex flex-row justify-between">
@@ -20,7 +27,7 @@ export default function AddFees({setShowFeesModal}: AddFeesProps) {
               <p className="text-sm text-[#475467]">Fill in fee details.</p>
             </div>
           </div>
-          <i className="cursor-pointer" onClick={()=>setShowFeesModal(false)}>
+          <i className="cursor-pointer" onClick={() => setShowFeesModal(false)}>
             <AiOutlineClose color="#667085" size={18} />
           </i>
         </div>
@@ -202,10 +209,10 @@ export default function AddFees({setShowFeesModal}: AddFeesProps) {
           </div>
           <hr className="w-full my-1.5 h-[0.5px] border-none bg-[#EAECF0]" />
           <button className="text-white w-[97%] bg-[#014cafc4] capitalize rounded-sm h-[44px] place-self-center cursor-pointer hover:bg-[#014DAF] transition ease-in-out delay-100">
-                add fee
+            add fee
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }

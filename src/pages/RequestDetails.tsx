@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { CardRequest, ProgressStages } from "../entities";
+import { motion } from "framer-motion";
 import Actions from "../components/card-requests/ui/Actions";
 import download from "../assets/icons/download.png";
 import markProgress from "../assets/icons/mark-inprogress.png";
@@ -21,7 +22,7 @@ export default function RequestDetails() {
     markReady: true,
     sendDispatch: true,
     acknowledged: true,
-    markCompleted: false
+    markCompleted: false,
   });
 
   //
@@ -46,7 +47,13 @@ export default function RequestDetails() {
   if (!displayPage) return <h1>Card details not found.</h1>;
 
   return (
-    <div className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 1 }}
+      className="w-full"
+    >
       <section>
         <h1 className="text-lg capitalize font-semibold">request details</h1>
         <p className="text-[#475467] text-sm">
@@ -119,7 +126,8 @@ export default function RequestDetails() {
                   Pending
                 </div>
               )}
-              {(!progressStages.acknowledged || progressStages.markCompleted) && (
+              {(!progressStages.acknowledged ||
+                progressStages.markCompleted) && (
                 <p className="bg-[#EFF8FF] border border-[#B2DDFF] text-[#175CD3] rounded-full py-0.5 px-4 w-fit">
                   Acknowledged
                 </p>
@@ -191,12 +199,14 @@ export default function RequestDetails() {
             icon={acknowledged}
             wrapperClassname="bg-[#014DAF]"
             imgClassname="h-[16.67px] w-[16.67px]"
-            disabled={progressStages.acknowledged || progressStages.markCompleted}
+            disabled={
+              progressStages.acknowledged || progressStages.markCompleted
+            }
             initiateFn={() => {
               setProgressStages((prevSt) => {
                 return {
                   ...prevSt,
-                  markCompleted: true
+                  markCompleted: true,
                 };
               });
             }}
@@ -234,6 +244,6 @@ export default function RequestDetails() {
           }}
         />
       )}
-    </div>
+    </motion.div>
   );
 }

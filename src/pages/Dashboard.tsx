@@ -1,32 +1,32 @@
 import calenderICon from "../assets/icons/calender.png";
 import { GoChevronRight } from "react-icons/go";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import resize from "../assets/icons/resize-arrow.png";
-import {
-  analyticalDatas,
-  quickAccess,
-  recentCardRequests,
-} from "../utils";
+import { analyticalDatas, quickAccess, recentCardRequests } from "../utils";
 import { Analytics } from "../components/dashboard/analytics";
 import MonthlyIssuance from "../components/dashboard/graphs/monthlyIssuance";
 import RecentCardRequests from "../components/dashboard/tables/recentCardRequests";
 import WeekIncome from "../components/dashboard/graphs/weekIncome";
 import StatusDistribution from "../components/dashboard/graphs/statusDistribution";
-import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [user, setUser] = useState<string>();
 
-  function getUser (){
-    const userName = sessionStorage.getItem("user")
-    if(userName) setUser(JSON.parse(userName));
+  function getUser() {
+    const userName = sessionStorage.getItem("user");
+    if (userName) setUser(JSON.parse(userName));
   }
 
   function getCurrentDate(): string {
     const date = new Date();
-    const options: Intl.DateTimeFormatOptions = { day: "2-digit", month: "short", year: "numeric" };
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    };
     return date.toLocaleDateString("en-GB", options).replace(",", "");
   }
-  
 
   const tableHead = [
     {
@@ -51,12 +51,18 @@ export default function Dashboard() {
     },
   ];
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser();
-  }, [user])
+  }, [user]);
 
   return (
-    <div className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 1 }}
+      className="w-full"
+    >
       {/* dashboard overview section */}
       <section className="flex flex-col gap-y-5">
         {/* intro texts and time */}
@@ -92,7 +98,7 @@ export default function Dashboard() {
               return (
                 <div
                   key={idx}
-                  className="text-sm bg-[#F1F7FF] rounded-[10px] py-2.5 px-5 flex flex-row gap-x-2 items-center cursor-pointer w-full hover:animate-pulse"
+                  className="text-sm bg-[#F1F7FF] rounded-[10px] py-2.5 px-5 flex flex-row gap-x-2 items-center cursor-pointer w-full transition ease-in-out delay-100 hover:scale-105"
                 >
                   <img
                     src={item.icon}
@@ -116,7 +122,16 @@ export default function Dashboard() {
           <h1 className="font-semibold text-lg">Analytics</h1>
           <hr className="border-none h-[0.5px] bg-[#D0D5DD] w-full" />
         </div>
-        <div className="flex flex-col gap-3 items-center md:grid md:grid-cols-2 md:place-items-center xl:flex xl:flex-row">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.3 },
+            },
+          }}
+          className="flex flex-col gap-3 items-center md:grid md:grid-cols-2 md:place-items-center xl:flex xl:flex-row"
+        >
           {analyticalDatas.map((data, idx) => {
             return (
               <Analytics
@@ -130,7 +145,7 @@ export default function Dashboard() {
               />
             );
           })}
-        </div>
+        </motion.div>
       </section>
 
       {/* monthly issuance & recent card requests */}
@@ -221,6 +236,6 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

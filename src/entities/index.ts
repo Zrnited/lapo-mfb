@@ -23,7 +23,7 @@ export type CardProfileType = {
 
 export type Fee = {
     name: string;
-    value: number;
+    value: number | string;
     frequency: string;
     currency: string;
     time: string;

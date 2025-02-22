@@ -81,7 +81,7 @@ export default function Header({ setNav }: HeaderProps) {
             >
               <GiHamburgerMenu color="#001735" />
             </span>
-            <div className="flex flex-row gap-x-2 items-center">
+            <div className="flex flex-row gap-x-2 items-center sm:gap-x-6 lg:gap-x-2">
               <Link to={'/dashboard/card-profile'} className="text-xs flex flex-row gap-x-1 items-center px-2 py-1 hover:bg-[#f1f1f1] transition ease-in-out delay-100 rounded-lg sm:gap-x-2 sm:py-2">
                 <i>
                   <GoChevronLeft size={20} />
@@ -95,7 +95,7 @@ export default function Header({ setNav }: HeaderProps) {
               </Link>
               <div className="text-xs flex flex-row gap-x-2 items-center">
                 <i className="sm:hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
-                <p className="text-[#475467] font-medium sm:hidden lg:flex">Card Profile</p>
+                <p className="text-[#475467] font-medium hidden lg:flex">Card Profile</p>
                 <i><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#001735] font-semibold">Create Profile</p>
               </div>
@@ -111,7 +111,7 @@ export default function Header({ setNav }: HeaderProps) {
             >
               <GiHamburgerMenu color="#001735" />
             </span>
-            <div className="flex flex-row gap-x-2 items-center">
+            <div className="flex flex-row gap-x-2 items-center sm:gap-x-6 lg:gap-x-2">
               <Link to={'/dashboard/card-request'} className="text-xs flex flex-row gap-x-1 items-center px-2 py-1 hover:bg-[#f1f1f1] transition ease-in-out delay-100 rounded-lg sm:gap-x-2 sm:py-2">
                 <i>
                   <GoChevronLeft size={20} />
@@ -125,7 +125,7 @@ export default function Header({ setNav }: HeaderProps) {
               </Link>
               <div className="text-xs flex flex-row gap-x-2 items-center">
                 <i className="sm:hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
-                <p className="text-[#475467] font-medium sm:hidden lg:flex">Card Request</p>
+                <p className="text-[#475467] font-medium hidden lg:flex">Card Request</p>
                 <i><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#001735] font-semibold">Request Details</p>
               </div>

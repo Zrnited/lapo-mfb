@@ -1,4 +1,5 @@
 import { GoChevronDown } from "react-icons/go";
+import { motion } from "framer-motion";
 import add from "../assets/icons/add-icon.png";
 import FeesTable from "../components/card-profile/table/FeesTable";
 import { useEffect, useState } from "react";
@@ -40,7 +41,7 @@ export default function CreateProfile() {
   const [fees, setFees] = useState<Fee[]>([
     {
       name: "",
-      value: 0,
+      value: "",
       frequency: "",
       currency: "",
       time: "",
@@ -50,7 +51,6 @@ export default function CreateProfile() {
   ]);
   const [showFeesModal, setShowFeesModal] = useState<boolean>(false);
 
-  
   useEffect(() => {
     setFees(fees);
   }, [fees]);
@@ -60,7 +60,13 @@ export default function CreateProfile() {
   }, [showFeesModal]);
 
   return (
-    <div className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 1 }}
+      className="w-full"
+    >
       <h1 className="text-lg capitalize font-semibold">create profile</h1>
       <p className="text-[#475467] text-sm">
         Fill in profile details and add card fee.
@@ -191,7 +197,10 @@ export default function CreateProfile() {
           {/* fees */}
           <div className="g-white rounded-[10px] border border-[#E2E2E2] p-3 bg-white">
             <h2 className="font-semibold text-[#121212] mb-4">Fees</h2>
-            <div onClick={()=>setShowFeesModal(true)} className="capitalize bg-[#014DAF] text-white h-[36px] w-[101px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer">
+            <div
+              onClick={() => setShowFeesModal(true)}
+              className="capitalize bg-[#014DAF] text-white h-[36px] w-[101px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer opacity-80 transition ease-in-out delay-100 hover:opacity-100"
+            >
               <img src={add} alt="icon" className="h-[11.67px] w-[11.67px]" />
               <p>add fee</p>
             </div>
@@ -200,14 +209,14 @@ export default function CreateProfile() {
           {/* fees table */}
           <FeesTable tableBody={fees} tableHead={tableHeadings} />
 
-          <button className="capitalize bg-[#014DAF] text-white h-[36px] w-[293px] rounded-md flex items-center justify-center gap-x-2 cursor-pointer place-self-center my-5 md:place-self-start">
+          <button className="capitalize bg-[#014DAF] text-white h-[36px] w-[293px] rounded-md flex items-center justify-center gap-x-2 cursor-pointer place-self-center my-5 opacity-80 transition ease-in-out delay-100 hover:opacity-100 md:place-self-start">
             create profile
           </button>
         </form>
       </section>
 
       {/* add fees modal */}
-      {showFeesModal && (<AddFees setShowFeesModal={setShowFeesModal} />)}
-    </div>
+      {showFeesModal && <AddFees setShowFeesModal={setShowFeesModal} />}
+    </motion.div>
   );
 }

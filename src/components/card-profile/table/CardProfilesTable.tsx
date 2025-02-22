@@ -35,7 +35,7 @@ export default function CardProfilesTable({
         {tableBody.map((card, idx) => {
           return (
             <tr
-              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467]"
+              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] text-[10px] text-[#475467]"
               key={idx}
             >
               <td className="table-cell border border-[#EAECF0]" style={{ fontWeight: "normal" }}>
@@ -64,8 +64,8 @@ export default function CardProfilesTable({
               </td>
               <td className="table-cell font-semibold border border-[#EAECF0]" style={{ }}>
                 <div className="flex flex-row gap-x-5 items-center justify-center w-full">
-                    <img src={deleteIcon} alt="icon" className="w-[15px] h-[16.67px]" />
-                    <img src={editIcon} alt="icon" className="w-[16.11px] h-[16.11px]" />
+                    <img src={deleteIcon} alt="icon" className="w-[15px] h-[16.67px] cursor-pointer" />
+                    <img src={editIcon} alt="icon" className="w-[16.11px] h-[16.11px] cursor-pointer" />
                 </div>
               </td>
             </tr>

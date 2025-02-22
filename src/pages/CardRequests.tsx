@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import search from "../assets/icons/search-icon.png";
 import CardRequestsTable from "../components/card-requests/tables/CardRequestTable";
 import { cardRequests } from "../utils";
 import { CardRequest } from "../entities";
 
 export default function CardRequests() {
-
   const tableHeadings = [
     {
       name: "branch",
@@ -35,22 +35,28 @@ export default function CardRequests() {
     {
       name: "action",
       classname: "",
-    }
+    },
   ];
 
   const [cardReqItem, setCardReqItem] = useState<CardRequest>();
 
-  async function setCardItemToStorage (){
-    sessionStorage.setItem('cardRequest', JSON.stringify(cardReqItem));
-    window.location.href="/dashboard/card-request/request-details";
+  async function setCardItemToStorage() {
+    sessionStorage.setItem("cardRequest", JSON.stringify(cardReqItem));
+    window.location.href = "/dashboard/card-request/request-details";
   }
 
-  useEffect(()=>{
-    if(cardReqItem) setCardItemToStorage();
-  }, [cardReqItem])
+  useEffect(() => {
+    if (cardReqItem) setCardItemToStorage();
+  }, [cardReqItem]);
 
   return (
-    <div className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 1 }}
+      className="w-full"
+    >
       <section className="flex flex-col gap-y-2">
         <h1 className="text-lg capitalize font-semibold">card request</h1>
         <p className="text-[#475467] text-sm">
@@ -74,8 +80,12 @@ export default function CardRequests() {
         <hr className="w-full border-none h-[0.5px] bg-[#98A2B3]" />
       </section>
       <section className="mt-3">
-        <CardRequestsTable setCardReqItem={setCardReqItem} tableHead={tableHeadings} tableBody={cardRequests} />
+        <CardRequestsTable
+          setCardReqItem={setCardReqItem}
+          tableHead={tableHeadings}
+          tableBody={cardRequests}
+        />
       </section>
-    </div>
+    </motion.div>
   );
 }

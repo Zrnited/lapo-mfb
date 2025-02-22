@@ -35,8 +35,8 @@ export default function CardRequestsTable({
         {tableBody.map((card, idx) => {
           return (
             <tr
-              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467]"
-              onClick={() => setCardReqItem(card)}
+              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] text-[10px] text-[#475467]"
+              // onClick={() => setCardReqItem(card)}
               key={idx}
             >
               <td
@@ -97,7 +97,7 @@ export default function CardRequestsTable({
                   </div>
                 </td>
               )}
-              <td className="table-cell font-semibold text-[#014DAF] hover:underline hover:cursor-pointer border border-[#EAECF0]">
+              <td onClick={() => setCardReqItem(card)} className="table-cell font-semibold text-[#014DAF] hover:underline hover:cursor-pointer border border-[#EAECF0]">
                 view
               </td>
             </tr>

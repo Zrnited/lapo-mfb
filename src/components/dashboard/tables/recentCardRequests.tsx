@@ -1,4 +1,5 @@
 import { RequestCardRequests } from "../../../entities";
+import { motion } from "framer-motion";
 
 export interface TableProps {
   tableHead: {
@@ -30,12 +31,26 @@ export default function RecentCardRequests({
           })}
         </tr>
       </thead>
-      <tbody className="py-2 capitalize">
+      <motion.tbody
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: { staggerChildren: 0.3 },
+          },
+        }}
+        className="py-2 capitalize"
+      >
         {tableBody.map((req, idx) => {
           return (
-            <tr
+            <motion.tr
               className="border-b-[#EAECF0] border-b transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] lg:h-[55px]"
               key={idx}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5 }}
             >
               <td className="table-cell" style={{ fontWeight: "normal" }}>
                 {req.branch}
@@ -83,10 +98,10 @@ export default function RecentCardRequests({
               >
                 View
               </td>
-            </tr>
+            </motion.tr>
           );
         })}
-      </tbody>
+      </motion.tbody>
     </table>
   );
 }

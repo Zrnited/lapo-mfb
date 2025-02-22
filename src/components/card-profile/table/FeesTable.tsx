@@ -33,7 +33,7 @@ export default function FeesTable({
         {tableBody.map((fee, idx) => {
           return (
             <tr
-              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467] hover:bg-gray-50"
+              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] text-[10px] text-[#475467]"
               key={idx}
             >
               <td

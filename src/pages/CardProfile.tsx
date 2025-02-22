@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import search from "../assets/icons/search-icon.png";
 import { CardProfileType } from "../entities";
 import add from "../assets/icons/add-icon.png";
@@ -35,35 +36,41 @@ export default function CardProfile() {
 
   const [exisCardProfile, setExisCardProfile] = useState<CardProfileType[]>([
     {
-        cardName: "Verve-1",
-        currency: "NGN",
-        expiration: "40 months",
-        binPrefix: "50611234",
-        dateCreated: "11/10/2024 23:21:03"
+      cardName: "Verve-1",
+      currency: "NGN",
+      expiration: "40 months",
+      binPrefix: "50611234",
+      dateCreated: "11/10/2024 23:21:03",
     },
     {
-        cardName: "Verve-1",
-        currency: "NGN",
-        expiration: "40 months",
-        binPrefix: "50611234",
-        dateCreated: "11/10/2024 23:21:03"
+      cardName: "Verve-1",
+      currency: "NGN",
+      expiration: "40 months",
+      binPrefix: "50611234",
+      dateCreated: "11/10/2024 23:21:03",
     },
     {
-        cardName: "Verve-1",
-        currency: "NGN",
-        expiration: "40 months",
-        binPrefix: "50611234",
-        dateCreated: "11/10/2024 23:21:03"
-    }
+      cardName: "Verve-1",
+      currency: "NGN",
+      expiration: "40 months",
+      binPrefix: "50611234",
+      dateCreated: "11/10/2024 23:21:03",
+    },
   ]);
 
   //comment out later
-  useEffect(()=>{
+  useEffect(() => {
     setExisCardProfile(exisCardProfile);
-  }, [exisCardProfile])
+  }, [exisCardProfile]);
 
   return (
-    <div className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 1 }}
+      className="w-full"
+    >
       <section className="flex flex-col gap-y-2">
         <h1 className="text-lg capitalize font-semibold">card profile</h1>
         <p className="text-[#475467] text-sm">
@@ -83,7 +90,10 @@ export default function CardProfile() {
               className="w-[15px] h-[15px] absolute left-4 top-3"
             />
           </div>
-          <Link to={'/dashboard/card-profile/create-profile'} className="capitalize bg-[#014DAF] text-white h-[36px] w-[117px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer">
+          <Link
+            to={"/dashboard/card-profile/create-profile"}
+            className="capitalize opacity-85 bg-[#014DAF] text-white h-[36px] w-[117px] text-xs rounded-md flex items-center justify-center gap-x-2 cursor-pointer transition ease-in-out delay-100 hover:opacity-100"
+          >
             <img src={add} alt="icon" className="h-[11.67px] w-[11.67px]" />
             <p>add profile</p>
           </Link>
@@ -92,8 +102,11 @@ export default function CardProfile() {
       </section>
       {/* card profiles */}
       <section className="mt-5 h-full">
-        <CardProfilesTable tableHead={tableHeadings} tableBody={exisCardProfile} />
+        <CardProfilesTable
+          tableHead={tableHeadings}
+          tableBody={exisCardProfile}
+        />
       </section>
-    </div>
+    </motion.div>
   );
 }
