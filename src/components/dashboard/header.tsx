@@ -94,7 +94,7 @@ export default function Header({ setNav }: HeaderProps) {
                 />
               </Link>
               <div className="text-xs flex flex-row gap-x-2 items-center">
-                <i className="sm:hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
+                <i className="hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#475467] font-medium hidden lg:flex">Card Profile</p>
                 <i><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#001735] font-semibold">Create Profile</p>
@@ -124,7 +124,7 @@ export default function Header({ setNav }: HeaderProps) {
                 />
               </Link>
               <div className="text-xs flex flex-row gap-x-2 items-center">
-                <i className="sm:hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
+                <i className="hidden lg:flex"><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#475467] font-medium hidden lg:flex">Card Request</p>
                 <i><GoChevronRight size={15} color="#D0D5DD" /></i>
                 <p className="text-[#001735] font-semibold">Request Details</p>
