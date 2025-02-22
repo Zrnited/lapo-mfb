@@ -35,7 +35,7 @@ export default function CardProfilesTable({
         {tableBody.map((card, idx) => {
           return (
             <tr
-              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467] hover:bg-gray-50"
+              className="border-y border-x border-[#EAECF0] transition delay-100 text-center h-[42px] hover:cursor-pointer text-[10px] text-[#475467]"
               key={idx}
             >
               <td className="table-cell border border-[#EAECF0]" style={{ fontWeight: "normal" }}>

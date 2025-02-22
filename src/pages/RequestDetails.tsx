@@ -1,19 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { CardRequest } from "../entities";
+import { CardRequest, ProgressStages } from "../entities";
 import Actions from "../components/card-requests/ui/Actions";
 import download from "../assets/icons/download.png";
 import markProgress from "../assets/icons/mark-inprogress.png";
 import markReady from "../assets/icons/mark-ready.png";
 import dispatch from "../assets/icons/dispatch.png";
 import acknowledged from "../assets/icons/acknowledged.png";
-// import Notify from "../components/card-requests/modals/Notify";
+import Notify from "../components/card-requests/modals/Notify";
 
 export default function RequestDetails() {
   //checks if card exists
   const [displayPage] = useState(() => {
     return sessionStorage.getItem("cardRequest") ? true : false;
   });
+
+  const [progressStages, setProgressStages] = useState<ProgressStages>({
+    download: false,
+    markProgress: true,
+    markReady: true,
+    sendDispatch: true,
+    acknowledged: true,
+    markCompleted: false
+  });
+
+  //
+  const [downloadNotify, setdownloadNotify] = useState<boolean>(false);
+  const [dispatchNotify, setDispatchNotify] = useState<boolean>(false);
 
   const [cardObject, setCardObject] = useState<CardRequest>();
 
@@ -91,9 +104,26 @@ export default function RequestDetails() {
             </div>
             <div className="capitalize flex flex-col gap-y-1">
               <label className="text-[#344054] text-sm">status</label>
-              <p className="text-[#344054] bg-[#EAECF0] px-3 py-0.5 rounded-full w-fit">
-                pending
-              </p>
+              {(!progressStages.markReady || !progressStages.sendDispatch) && (
+                <div className="bg-[#ECFDF3] border border-[#ABEFC6] text-[#067647] rounded-full py-1 px-2 w-fit">
+                  Ready
+                </div>
+              )}
+              {!progressStages.markProgress && (
+                <div className="bg-[#FFFAEB] border border-[#FEDF89] text-[#B54708] rounded-full py-1 px-2 w-fit">
+                  In Progress
+                </div>
+              )}
+              {!progressStages.download && (
+                <div className="bg-[#F9FAFB] border border-[#EAECF0] text-[#344054] rounded-full py-1 px-2 w-fit">
+                  Pending
+                </div>
+              )}
+              {(!progressStages.acknowledged || progressStages.markCompleted) && (
+                <p className="bg-[#EFF8FF] border border-[#B2DDFF] text-[#175CD3] rounded-full py-1 px-2 w-fit">
+                  Acknowledged
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -109,6 +139,8 @@ export default function RequestDetails() {
             icon={download}
             wrapperClassname="bg-[#344054]"
             imgClassname="h-[16.67px] w-[14.17px]"
+            disabled={progressStages.download}
+            initiateFn={() => setdownloadNotify(true)}
           />
 
           <Actions
@@ -116,6 +148,16 @@ export default function RequestDetails() {
             icon={markProgress}
             wrapperClassname="bg-[#B54708]"
             imgClassname="h-[16.67px] w-[16.67px]"
+            disabled={progressStages.markProgress}
+            initiateFn={() => {
+              setProgressStages((prevSt) => {
+                return {
+                  ...prevSt,
+                  markProgress: true,
+                  markReady: false,
+                };
+              });
+            }}
           />
 
           <Actions
@@ -123,6 +165,16 @@ export default function RequestDetails() {
             icon={markReady}
             wrapperClassname="bg-[#067647]"
             imgClassname="h-[16.43px] w-[15.83px]"
+            disabled={progressStages.markReady}
+            initiateFn={() => {
+              setProgressStages((prevSt) => {
+                return {
+                  ...prevSt,
+                  markReady: true,
+                  sendDispatch: false,
+                };
+              });
+            }}
           />
 
           <Actions
@@ -130,6 +182,8 @@ export default function RequestDetails() {
             icon={dispatch}
             wrapperClassname="bg-[#8020E7]"
             imgClassname="h-[15.17px] w-[15px]"
+            disabled={progressStages.sendDispatch}
+            initiateFn={() => setDispatchNotify(true)}
           />
 
           <Actions
@@ -137,11 +191,49 @@ export default function RequestDetails() {
             icon={acknowledged}
             wrapperClassname="bg-[#014DAF]"
             imgClassname="h-[16.67px] w-[16.67px]"
+            disabled={progressStages.acknowledged || progressStages.markCompleted}
+            initiateFn={() => {
+              setProgressStages((prevSt) => {
+                return {
+                  ...prevSt,
+                  markCompleted: true
+                };
+              });
+            }}
           />
         </div>
       </section>
       {/* notification modal */}
-      {/* <Notify text="Production file has been downloaded." /> */}
+      {downloadNotify && (
+        <Notify
+          text="Production file has been downloaded."
+          onContinue={() => {
+            setProgressStages((prevSt) => {
+              return {
+                ...prevSt,
+                download: true,
+                markProgress: false,
+              };
+            });
+            setdownloadNotify(false);
+          }}
+        />
+      )}
+      {dispatchNotify && (
+        <Notify
+          text="Card batch successfully sent to dispatch."
+          onContinue={() => {
+            setProgressStages((prevSt) => {
+              return {
+                ...prevSt,
+                sendDispatch: true,
+                acknowledged: false,
+              };
+            });
+            setDispatchNotify(false);
+          }}
+        />
+      )}
     </div>
   );
 }

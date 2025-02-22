@@ -18,7 +18,7 @@ export default function Dashboard() {
 
   function getUser (){
     const userName = sessionStorage.getItem("user")
-    if(userName) setUser(userName);
+    if(userName) setUser(JSON.parse(userName));
   }
 
   function getCurrentDate(): string {
@@ -26,8 +26,6 @@ export default function Dashboard() {
     const options: Intl.DateTimeFormatOptions = { day: "2-digit", month: "short", year: "numeric" };
     return date.toLocaleDateString("en-GB", options).replace(",", "");
   }
-  
-  console.log(getCurrentDate()); // Example output: "21 Feb 2025"
   
 
   const tableHead = [

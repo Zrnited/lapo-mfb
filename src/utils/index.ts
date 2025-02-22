@@ -49,12 +49,14 @@ const navigationLinks: NavLinks[] = [
     icon: cardProfile,
     to: "/dashboard/card-profile",
     iconActive: activeCardProfile,
+    innerRoute: "/dashboard/card-profile/create-profile"
   },
   {
     title: "card request",
     icon: cardRequest,
     to: "/dashboard/card-request",
     iconActive: activeCardRequest,
+    innerRoute: "/dashboard/card-request/request-details"
   },
   {
     title: "stock",

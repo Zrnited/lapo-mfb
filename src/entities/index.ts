@@ -3,6 +3,7 @@ export type NavLinks = {
   icon: string;
   iconActive?: string;
   to: string;
+  innerRoute?: string;
 };
 
 export type RequestCardRequests = {
@@ -38,4 +39,13 @@ export type CardRequest = {
   batch: string;
   dateRequested: string;
   status: string;
+}
+
+export type ProgressStages = {
+  download: boolean;
+  markProgress: boolean;
+  markReady: boolean;
+  sendDispatch: boolean;
+  acknowledged: boolean;
+  markCompleted: boolean;
 }

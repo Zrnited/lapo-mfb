@@ -69,19 +69,19 @@ export default function Sidebar({ setNav, nav, handleLogout }: AsideProps) {
                   to={link.to}
                   onClick={()=>setNav(false)}
                   className={`flex flex-row items-center gap-x-3 w-full hover:cursor-pointer p-3 rounded-md ${
-                    pathname === link.to
+                    pathname === link.to || pathname === link.innerRoute
                       ? "border border-[#E2E2E2] bg-[#F6F6F6]"
                       : "border-none bg-transparent"
                   }`}
                 >
                   <img
-                    src={pathname !== link.to ? link.icon : link.iconActive}
+                    src={pathname === link.to || pathname === link.innerRoute ? link.iconActive : link.icon}
                     alt="icon"
                     className="w-[13.33px] h-[13.33px]"
                   />
                   <p
                     className={`text-xs capitalize ${
-                      pathname === link.to ? "text-[#014DAF]" : "text-[#808080]"
+                      pathname === link.to || pathname === link.innerRoute ? "text-[#014DAF]" : "text-[#808080]"
                     }`}
                   >
                     {link.title}
@@ -91,11 +91,11 @@ export default function Sidebar({ setNav, nav, handleLogout }: AsideProps) {
             })}
           </ul>
         </div>
-        <div onClick={handleLogout} className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-16">
+        <div onClick={handleLogout} className="flex flex-row gap-x-5 items-center p-3 hover:bg-gray-100 transition ease-in-out delay-100 rounded-[10px] cursor-pointer mt-5">
           <img src={logoutIcon} alt="icon" className="w-[10.67px] h-[12px]" />
           <p className="text-[#121212] text-xs capitalize">logout</p>
         </div>
-        <div className="p-3 flex flex-col gap-y-2">
+        <div className="p-3 flex flex-col gap-y-2 mb-8">
           <p className="uppercase text-[8.5px] text-[#808080]">powered by</p>
             <img src={cardInfraLogo} alt="icon" className="w-[93.33px] h-[41.42px]" />
         </div>
