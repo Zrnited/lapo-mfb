@@ -105,22 +105,22 @@ export default function RequestDetails() {
             <div className="capitalize flex flex-col gap-y-1">
               <label className="text-[#344054] text-sm">status</label>
               {(!progressStages.markReady || !progressStages.sendDispatch) && (
-                <div className="bg-[#ECFDF3] border border-[#ABEFC6] text-[#067647] rounded-full py-1 px-2 w-fit">
+                <div className="bg-[#ECFDF3] border border-[#ABEFC6] text-[#067647] rounded-full py-0.5 px-4 w-fit">
                   Ready
                 </div>
               )}
               {!progressStages.markProgress && (
-                <div className="bg-[#FFFAEB] border border-[#FEDF89] text-[#B54708] rounded-full py-1 px-2 w-fit">
+                <div className="bg-[#FFFAEB] border border-[#FEDF89] text-[#B54708] rounded-full py-0.5 px-4 w-fit">
                   In Progress
                 </div>
               )}
               {!progressStages.download && (
-                <div className="bg-[#F9FAFB] border border-[#EAECF0] text-[#344054] rounded-full py-1 px-2 w-fit">
+                <div className="bg-[#F9FAFB] border border-[#EAECF0] text-[#344054] rounded-full py-0.5 px-4 w-fit">
                   Pending
                 </div>
               )}
               {(!progressStages.acknowledged || progressStages.markCompleted) && (
-                <p className="bg-[#EFF8FF] border border-[#B2DDFF] text-[#175CD3] rounded-full py-1 px-2 w-fit">
+                <p className="bg-[#EFF8FF] border border-[#B2DDFF] text-[#175CD3] rounded-full py-0.5 px-4 w-fit">
                   Acknowledged
                 </p>
               )}
