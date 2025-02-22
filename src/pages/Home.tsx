@@ -24,7 +24,7 @@ export default function Home() {
         <h1>This is Kolawole Mayowa Solution. Enter your name then click on the button below to login.</h1>
         <form className="flex flex-col gap-y-3 w-full items-center" onSubmit={handleSubmit}>
           <input className="bg-white h-[44px] rounded-md px-5 focus:outline-none w-[75%] placeholder:text-[#808080] text-black text-sm" type="text" placeholder="Enter your name" onChange={(e)=>setUser(e.target.value)} />
-          <button disabled={!user} className="bg-[#014DAF] rounded-md text-white cursor-pointer px-3 py-2 text-sm w-fit hover:animate-pulse disabled:bg-[#808080]">Proceed to dashboard</button>
+          <button disabled={!user} className="bg-[#014DAF] rounded-md text-white cursor-pointer px-3 py-2 text-sm w-fit hover:animate-pulse disabled:bg-[#808080] disabled:cursor-not-allowed">Proceed to dashboard</button>
         </form>
       </div>
     </main>

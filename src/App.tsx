@@ -4,7 +4,6 @@ import Layout from "./components/dashboard/layout";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import CardProfile from "./pages/CardProfile";
-// import CardRequest from "./pages/CardRequest";
 import CreateProfile from "./pages/CreateProfile";
 import CardRequests from "./pages/CardRequests";
 import RequestDetails from "./pages/RequestDetails";
